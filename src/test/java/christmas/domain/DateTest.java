@@ -51,7 +51,7 @@ public class DateTest {
     @MethodSource
     void isContainWeekTest(int day, List<Week> targetWeek, boolean expect) {
         Date date = new Date(day);
-        Assertions.assertThat(date.isContainWeek(targetWeek)).isEqualTo(expect);
+        Assertions.assertThat(date.isContainWeeks(targetWeek)).isEqualTo(expect);
     }
 
     private static Stream<Arguments> isContainWeekTest() {

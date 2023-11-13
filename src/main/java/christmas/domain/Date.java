@@ -12,7 +12,7 @@ public class Date {
         this.date = date;
     }
 
-    public boolean isContainWeek(List<Week> targetWeek) {
+    public boolean isContainWeeks(List<Week> targetWeek) {
         Week weekOfDate = getWeek();
         return targetWeek.contains(weekOfDate);
     }
@@ -24,5 +24,9 @@ public class Date {
     public Week getWeek() {
         Week[] values = Week.values();
         return values[date % 7];
+    }
+
+    public int getDate() {
+        return date;
     }
 }
