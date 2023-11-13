@@ -9,4 +9,8 @@ public class TodayBenefits {
     public TodayBenefits(List<DecemberEvent> events) {
         this.benefits = events;
     }
+
+    public boolean isContainEvents(DecemberEvent event) {
+        return benefits.contains(event);
+    }
 }
