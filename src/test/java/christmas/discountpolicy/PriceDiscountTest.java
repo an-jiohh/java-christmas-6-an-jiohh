@@ -18,13 +18,13 @@ class PriceDiscountTest {
     @ParameterizedTest
     @DisplayName("증정이벤트 계산 테스트")
     @MethodSource
-    void calculateWeekDayDiscountTest(HashMap<String, Integer> actual, int expect) {
+    void calculateGiftBenefitTest(HashMap<String, Integer> actual, int expect) {
         Menu menu = new Menu(actual);
         PriceDiscount priceDiscount = new PriceDiscount(menu);
         Assertions.assertThat(priceDiscount.calculateGiftBenefit()).isEqualTo(expect);
     }
 
-    private static Stream<Arguments> calculateWeekDayDiscountTest() {
+    private static Stream<Arguments> calculateGiftBenefitTest() {
         Map<String, Integer> gift = new HashMap<>();
         gift.put(MenuItem.T_BONE_STEAK.getName(), 10);
         gift.put(MenuItem.BBQ_RIBS.getName(), 1);
