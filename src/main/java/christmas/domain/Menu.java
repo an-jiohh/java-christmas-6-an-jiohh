@@ -1,9 +1,12 @@
 package christmas.domain;
 
+import christmas.constants.MenuCategory;
 import christmas.constants.MenuItem;
 import christmas.validation.MenuValidator;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Menu {
     private final EnumMap<MenuItem, Integer> menus;
@@ -22,6 +25,25 @@ public class Menu {
             creteMenu.put(menuKey, value);
         });
         return creteMenu;
+    }
+
+    public int sumPrice() {
+        return this.menus.entrySet().stream().mapToInt(entry -> calculateMenuPrice(entry)).sum();
+    }
+
+    private int calculateMenuPrice(Map.Entry<MenuItem, Integer> menuAndCount) {
+        MenuItem menu = menuAndCount.getKey();
+        int count = menuAndCount.getValue();
+        return menu.getPrice() * count;
+    }
+
+    public int sumMenuCountByMenuCategory(MenuCategory menuCategory) {
+        List<MenuItem> menusFromCategory = getMenusFromCategory(menuCategory);
+        return menusFromCategory.stream().mapToInt(menus::get).sum();
+    }
+
+    private List<MenuItem> getMenusFromCategory(MenuCategory menuCategory) {
+        return menus.keySet().stream().filter(key -> key.getCategory() == menuCategory).collect(Collectors.toList());
     }
 
 }
