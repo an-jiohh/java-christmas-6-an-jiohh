@@ -52,4 +52,8 @@ public enum DecemberEvent {
     public List<Integer> getTargetDay() {
         return targetDay;
     }
+
+    public int getIncrementDiscount() {
+        return incrementDiscount;
+    }
 }
