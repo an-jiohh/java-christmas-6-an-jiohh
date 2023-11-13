@@ -35,7 +35,7 @@ public class TodayBenefitService {
         if (date.isContainDays(event.getTargetDay())) {
             return true;
         }
-        if (date.isContainWeek(event.getTargetWeek())) {
+        if (date.isContainWeeks(event.getTargetWeek())) {
             return true;
         }
         return false;
