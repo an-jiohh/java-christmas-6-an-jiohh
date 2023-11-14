@@ -1,5 +1,6 @@
 package christmas.view;
 
+import static christmas.constants.Constants.DISCOUNT_CONVERT;
 import static christmas.constants.OutputMessage.ALL_BENEFITS_AMOUNT_HEAD;
 import static christmas.constants.OutputMessage.ALL_DISCOUNT_HEAD;
 import static christmas.constants.OutputMessage.ALL_PRICE_HEAD;
@@ -9,15 +10,16 @@ import static christmas.constants.OutputMessage.DISCOUNT_AMOUNT_SEPARATOR;
 import static christmas.constants.OutputMessage.EVENT_BADGE_HEAD;
 import static christmas.constants.OutputMessage.GIFT_MENU_HEAD;
 import static christmas.constants.OutputMessage.MENU_HEAD;
-import static christmas.constants.OutputMessage.NEGATIVE_MARK;
 import static christmas.constants.OutputMessage.NO_DISCOUNT;
 import static christmas.constants.OutputMessage.NUMBER_FORMAT;
 import static christmas.constants.OutputMessage.ONE_CHAMPAGNE;
 import static christmas.constants.OutputMessage.PAYMENT_AMOUNT_HEAD;
 import static christmas.constants.OutputMessage.PRICE_UNIT;
+import static christmas.constants.OutputMessage.RESULT_HEAD;
 
 import christmas.constants.DecemberEvent;
 import christmas.constants.MenuItem;
+import christmas.domain.Date;
 import christmas.domain.Discounts;
 import christmas.domain.Menu;
 import java.text.DecimalFormat;
@@ -33,6 +35,11 @@ public class OutputView {
 
     public void printMessage(String message) {
         System.out.println(message);
+    }
+
+    public void printResultHead(Date date) {
+        String format = String.format(RESULT_HEAD, date.getDate());
+        System.out.println(format);
     }
 
     public void printAllMenu(Menu menu) {
@@ -66,13 +73,14 @@ public class OutputView {
         }
         Map<DecemberEvent, Integer> discount = discounts.getDiscounts();
         discount.forEach(((event, benefit) -> System.out.println(
-                event.getName() + DISCOUNT_AMOUNT_SEPARATOR + formatter.format(benefit) + PRICE_UNIT)));
+                event.getName() + DISCOUNT_AMOUNT_SEPARATOR + formatter.format(DISCOUNT_CONVERT * benefit)
+                        + PRICE_UNIT)));
     }
 
     public void printAllBenefitsAmount(Discounts discounts) {
-        int allAmount = discounts.sumAllBenefitsAmount();
+        int allAmount = DISCOUNT_CONVERT * discounts.sumAllBenefitsAmount();
         System.out.println(ALL_BENEFITS_AMOUNT_HEAD);
-        System.out.println(NEGATIVE_MARK + formatter.format(allAmount) + PRICE_UNIT);
+        System.out.println(formatter.format(allAmount) + PRICE_UNIT);
     }
 
     public void printPaymentAmount(Menu menu, Discounts discounts) {
