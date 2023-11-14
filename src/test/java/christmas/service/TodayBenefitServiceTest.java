@@ -14,16 +14,16 @@ import org.junit.jupiter.params.provider.MethodSource;
 class TodayBenefitServiceTest {
 
     @ParameterizedTest
-    @DisplayName("타겟 요일에 해당하는 날짜인지 판별하는 기능 테스트")
+    @DisplayName("오늘날짜에 해당하는 혜택이 잘 생성되어 있는지 테스트")
     @MethodSource
-    void isContainWeekTest(int day, List<Event> expect) {
+    void createTodayBenefitTest(int day, List<Event> expect) {
         Date date = new Date(day);
         TodayBenefitService todayBenefitService = new TodayBenefitService(date);
         TodayBenefits todayBenefits = todayBenefitService.getTodayEvents();
         Assertions.assertThat(todayBenefits).extracting("benefits").isEqualTo(expect);
     }
 
-    private static Stream<Arguments> isContainWeekTest() {
+    private static Stream<Arguments> createTodayBenefitTest() {
         return Stream.of(
                 Arguments.of(1, List.of(Event.CHRISTMAS_D_DAY_DISCOUNT, Event.WEEKEND_DISCOUNT,
                         Event.GIFT_EVENTS)),
