@@ -3,7 +3,10 @@ package christmas.domain;
 import static christmas.constants.Constants.ZERO_DISCOUNT;
 
 import christmas.constants.DecemberEvent;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class Discounts {
     private final HashMap<DecemberEvent, Integer> discounts;
@@ -21,6 +24,37 @@ public class Discounts {
             }
         });
         return benefitDiscounts;
+    }
+
+    public int sumDiscount(DecemberEvent event) {
+        if (discounts.containsKey(event)) {
+            return discounts.get(event);
+        }
+        return ZERO_DISCOUNT;
+    }
+
+    public int sumAllBenefitsAmount() {
+        return discounts.values().stream().mapToInt(value -> value).sum();
+    }
+
+    public int sumAllDiscountAmount() {
+        return discounts.entrySet()
+                .stream()
+                .filter(value -> value.getKey() != DecemberEvent.GIFT_EVENTS)
+                .mapToInt(Entry::getValue)
+                .sum();
+    }
+
+    public boolean isContainEvent(DecemberEvent decemberEvent) {
+        return discounts.containsKey(decemberEvent);
+    }
+
+    public boolean isDiscountEmpty() {
+        return discounts.isEmpty();
+    }
+
+    public Map<DecemberEvent, Integer> getDiscounts() {
+        return Collections.unmodifiableMap(new HashMap<>(discounts));
     }
 
 }
