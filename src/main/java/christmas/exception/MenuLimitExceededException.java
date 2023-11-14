@@ -1,12 +1,10 @@
 package christmas.exception;
 
-import static christmas.constants.ExceptionMessage.MENU_EXCEPTION_MESSAGE;
-
 public class MenuLimitExceededException extends IllegalArgumentException {
     public static final MenuLimitExceededException exception = new MenuLimitExceededException();
 
     private MenuLimitExceededException() {
-        super(MENU_EXCEPTION_MESSAGE);
+        super("[ERROR] 메뉴는 20개까지 주문할 수 있습니다.");
     }
 
 

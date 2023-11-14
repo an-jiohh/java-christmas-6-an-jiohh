@@ -1,6 +1,8 @@
 package christmas.view;
 
 import static christmas.constants.Constants.DISCOUNT_CONVERT;
+import static christmas.constants.ExceptionMessage.DATE_EXCEPTION_MESSAGE;
+import static christmas.constants.ExceptionMessage.MENU_EXCEPTION_MESSAGE;
 import static christmas.constants.OutputMessage.ALL_BENEFITS_AMOUNT_HEAD;
 import static christmas.constants.OutputMessage.ALL_DISCOUNT_HEAD;
 import static christmas.constants.OutputMessage.ALL_PRICE_HEAD;
@@ -31,6 +33,14 @@ public class OutputView {
 
     public void printErrorMessage(Exception exception) {
         System.out.println(exception.getMessage());
+    }
+
+    public void printMenuErrorMessage() {
+        System.out.println(MENU_EXCEPTION_MESSAGE);
+    }
+
+    public void printDateErrorMessage() {
+        System.out.println(DATE_EXCEPTION_MESSAGE);
     }
 
     public void printMessage(String message) {

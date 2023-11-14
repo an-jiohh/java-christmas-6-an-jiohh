@@ -20,7 +20,7 @@ public class MenuService {
                 HashMap<String, Integer> menus = inputView.readMenuData();
                 return new Menu(menus);
             } catch (IllegalArgumentException exception) {
-                outputView.printErrorMessage(exception);
+                outputView.printMenuErrorMessage();
             }
         }
     }

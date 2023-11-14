@@ -9,8 +9,7 @@ import static christmas.constants.Constants.MENU_COUNT_SEPARATOR_DUPLICATE;
 import static christmas.constants.Constants.MENU_COUNT_SPLIT_LENGTH;
 import static christmas.constants.Constants.MENU_POSITION;
 
-import christmas.exception.CountIncludeCharException;
-import christmas.exception.DateIncludeCharException;
+import christmas.exception.IncludeCharException;
 import christmas.exception.InputBlankException;
 import christmas.exception.InvalidMenuCountSeparatorException;
 import christmas.exception.InvalidMenusSeparatorException;
@@ -20,7 +19,7 @@ public class InputValidator {
 
     public void validateNumber(String readLine) {
         checkBlack(readLine);
-        checkDateDigit(readLine);
+        checkDigit(readLine);
     }
 
     public void validateMenuLine(String readLine) {
@@ -43,22 +42,14 @@ public class InputValidator {
     public void validateCount(List<String[]> menus) {
         menus.forEach(menu -> {
             checkBlack(menu[COUNT_POSITION]);
-            checkCountDigit(menu[COUNT_POSITION]);
+            checkDigit(menu[COUNT_POSITION]);
         });
     }
 
-    private void checkDateDigit(String readLine) {
+    private void checkDigit(String readLine) {
         for (int i = 0; i < readLine.length(); i++) {
             if (!Character.isDigit(readLine.charAt(i))) {
-                throw DateIncludeCharException.exception;
-            }
-        }
-    }
-
-    private void checkCountDigit(String readLine) {
-        for (int i = 0; i < readLine.length(); i++) {
-            if (!Character.isDigit(readLine.charAt(i))) {
-                throw CountIncludeCharException.exception;
+                throw IncludeCharException.exception;
             }
         }
     }

@@ -1,12 +1,10 @@
 package christmas.exception;
 
-import static christmas.constants.ExceptionMessage.MENU_EXCEPTION_MESSAGE;
-
 public class BeverageOnlyOrderException extends IllegalArgumentException {
     public static final BeverageOnlyOrderException exception = new BeverageOnlyOrderException();
 
     private BeverageOnlyOrderException() {
-        super(MENU_EXCEPTION_MESSAGE);
+        super("[ERROR] 음료만 주문 할 수 없습니다.");
     }
 
     @Override

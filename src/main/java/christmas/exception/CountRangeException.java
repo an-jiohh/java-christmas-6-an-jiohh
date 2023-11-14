@@ -1,12 +1,10 @@
 package christmas.exception;
 
-import static christmas.constants.ExceptionMessage.MENU_EXCEPTION_MESSAGE;
-
 public class CountRangeException extends IllegalArgumentException {
     public static final CountRangeException exception = new CountRangeException();
 
     private CountRangeException() {
-        super(MENU_EXCEPTION_MESSAGE);
+        super("[ERROR] 메뉴 개수는 1이상을 입력해야합니다.");
     }
 
 

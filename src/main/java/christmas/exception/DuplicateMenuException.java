@@ -1,12 +1,10 @@
 package christmas.exception;
 
-import static christmas.constants.ExceptionMessage.MENU_EXCEPTION_MESSAGE;
-
 public class DuplicateMenuException extends IllegalArgumentException {
     public static final DuplicateMenuException exception = new DuplicateMenuException();
 
     private DuplicateMenuException() {
-        super(MENU_EXCEPTION_MESSAGE);
+        super("[ERROR] 중복된 메뉴가 존재합니다.");
     }
 
     @Override

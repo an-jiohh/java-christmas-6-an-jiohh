@@ -19,7 +19,7 @@ public class DateService {
                 int number = inputView.readNumberData();
                 return new Date(number);
             } catch (IllegalArgumentException exception) {
-                outputView.printErrorMessage(exception);
+                outputView.printDateErrorMessage();
             }
         }
     }
