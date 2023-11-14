@@ -2,7 +2,7 @@ package christmas.discountpolicy;
 
 import static christmas.constants.Constants.ZERO_DISCOUNT;
 
-import christmas.constants.DecemberEvent;
+import christmas.constants.Event;
 import christmas.constants.MenuItem;
 import christmas.domain.Menu;
 import java.util.HashMap;
@@ -31,7 +31,7 @@ class PriceDiscountTest {
         Map<String, Integer> noneGift = new HashMap<>();
         noneGift.put(MenuItem.BBQ_RIBS.getName(), 1);
         return Stream.of(
-                Arguments.of(gift, DecemberEvent.GIFT_EVENTS.getDiscount()),
+                Arguments.of(gift, Event.GIFT_EVENTS.getDiscount()),
                 Arguments.of(noneGift, ZERO_DISCOUNT)
         );
     }

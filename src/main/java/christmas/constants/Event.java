@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public enum DecemberEvent {
+public enum Event {
     CHRISTMAS_D_DAY_DISCOUNT("크리스마스 디데이 할인", 900, 100, List.of(), createRangeNumbers(1, 25)),
     WEEKDAY_DISCOUNT("평일 할인", 2023, List.of(Week.SUNDAY, Week.MONDAY, Week.TUESDAY, Week.WEDNESDAY, Week.THURSDAY),
             List.of()),
@@ -18,14 +18,14 @@ public enum DecemberEvent {
     private List<Week> targetWeek;
     private List<Integer> targetDay;
 
-    DecemberEvent(String name, int discount, List<Week> targetWeek, List<Integer> targetDay) {
+    Event(String name, int discount, List<Week> targetWeek, List<Integer> targetDay) {
         this.name = name;
         this.discount = discount;
         this.targetWeek = targetWeek;
         this.targetDay = targetDay;
     }
 
-    DecemberEvent(String name, int discount, int incrementDiscount, List<Week> targetWeek, List<Integer> targetDay) {
+    Event(String name, int discount, int incrementDiscount, List<Week> targetWeek, List<Integer> targetDay) {
         this.name = name;
         this.discount = discount;
         this.incrementDiscount = incrementDiscount;

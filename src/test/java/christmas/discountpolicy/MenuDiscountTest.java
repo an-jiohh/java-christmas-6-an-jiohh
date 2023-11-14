@@ -2,7 +2,7 @@ package christmas.discountpolicy;
 
 import static christmas.constants.Constants.ZERO_DISCOUNT;
 
-import christmas.constants.DecemberEvent;
+import christmas.constants.Event;
 import christmas.constants.MenuItem;
 import christmas.domain.Menu;
 import java.util.HashMap;
@@ -32,7 +32,7 @@ class MenuDiscountTest {
         actual.put(MenuItem.CHOCOLATE_CAKE.getName(), 1);
         actual.put(MenuItem.ICE_CREAM.getName(), 1);
         return Stream.of(
-                Arguments.of(actual, 2 * DecemberEvent.WEEKDAY_DISCOUNT.getDiscount())
+                Arguments.of(actual, 2 * Event.WEEKDAY_DISCOUNT.getDiscount())
         );
     }
 
@@ -70,7 +70,7 @@ class MenuDiscountTest {
         actual.put(MenuItem.CHOCOLATE_CAKE.getName(), 1);
         actual.put(MenuItem.ICE_CREAM.getName(), 1);
         return Stream.of(
-                Arguments.of(actual, 3 * DecemberEvent.WEEKEND_DISCOUNT.getDiscount())
+                Arguments.of(actual, 3 * Event.WEEKEND_DISCOUNT.getDiscount())
         );
     }
 

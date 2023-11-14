@@ -1,16 +1,16 @@
 package christmas.domain;
 
-import christmas.constants.DecemberEvent;
+import christmas.constants.Event;
 import java.util.List;
 
 public class TodayBenefits {
-    private final List<DecemberEvent> benefits;
+    private final List<Event> benefits;
 
-    public TodayBenefits(List<DecemberEvent> events) {
+    public TodayBenefits(List<Event> events) {
         this.benefits = events;
     }
 
-    public boolean isContainEvents(DecemberEvent event) {
+    public boolean isContainEvents(Event event) {
         return benefits.contains(event);
     }
 }

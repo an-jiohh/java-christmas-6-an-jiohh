@@ -3,7 +3,7 @@ package christmas.discountpolicy;
 import static christmas.constants.Constants.GIFT_CRITERIA;
 import static christmas.constants.Constants.ZERO_DISCOUNT;
 
-import christmas.constants.DecemberEvent;
+import christmas.constants.Event;
 import christmas.domain.Menu;
 
 public class PriceDiscount {
@@ -15,7 +15,7 @@ public class PriceDiscount {
 
     public int calculateGiftBenefit() {
         if (menu.sumPrice() >= GIFT_CRITERIA) {
-            return DecemberEvent.GIFT_EVENTS.getDiscount();
+            return Event.GIFT_EVENTS.getDiscount();
         }
         return ZERO_DISCOUNT;
     }

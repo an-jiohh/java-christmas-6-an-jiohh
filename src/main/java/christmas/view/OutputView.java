@@ -17,7 +17,7 @@ import static christmas.constants.OutputMessage.PAYMENT_AMOUNT_HEAD;
 import static christmas.constants.OutputMessage.PRICE_UNIT;
 import static christmas.constants.OutputMessage.RESULT_HEAD;
 
-import christmas.constants.DecemberEvent;
+import christmas.constants.Event;
 import christmas.constants.MenuItem;
 import christmas.domain.Date;
 import christmas.domain.Discounts;
@@ -58,7 +58,7 @@ public class OutputView {
 
     public void printGiftMenu(Discounts discounts) {
         System.out.println(GIFT_MENU_HEAD);
-        if (discounts.isContainEvent(DecemberEvent.GIFT_EVENTS)) {
+        if (discounts.isContainEvent(Event.GIFT_EVENTS)) {
             System.out.println(ONE_CHAMPAGNE);
             return;
         }
@@ -71,7 +71,7 @@ public class OutputView {
             System.out.println(NO_DISCOUNT);
             return;
         }
-        Map<DecemberEvent, Integer> discount = discounts.getDiscounts();
+        Map<Event, Integer> discount = discounts.getDiscounts();
         discount.forEach(((event, benefit) -> System.out.println(
                 event.getName() + DISCOUNT_AMOUNT_SEPARATOR + formatter.format(DISCOUNT_CONVERT * benefit)
                         + PRICE_UNIT)));

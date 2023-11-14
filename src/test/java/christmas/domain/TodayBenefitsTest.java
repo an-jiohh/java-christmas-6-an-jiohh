@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import christmas.constants.DecemberEvent;
+import christmas.constants.Event;
 import java.util.List;
 import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
@@ -14,22 +14,22 @@ class TodayBenefitsTest {
     @ParameterizedTest
     @DisplayName("혜택 포함 체크 기능 테스트")
     @MethodSource
-    void isContainEventsTest(List<DecemberEvent> given, DecemberEvent target, boolean expect) {
+    void isContainEventsTest(List<Event> given, Event target, boolean expect) {
         TodayBenefits todayBenefits = new TodayBenefits(given);
         Assertions.assertThat(todayBenefits.isContainEvents(target)).isEqualTo(expect);
     }
 
     private static Stream<Arguments> isContainEventsTest() {
         return Stream.of(
-                Arguments.of(List.of(DecemberEvent.CHRISTMAS_D_DAY_DISCOUNT, DecemberEvent.WEEKEND_DISCOUNT,
-                        DecemberEvent.GIFT_EVENTS), DecemberEvent.CHRISTMAS_D_DAY_DISCOUNT, true),
-                Arguments.of(List.of(DecemberEvent.WEEKDAY_DISCOUNT, DecemberEvent.SPECIAL_DISCOUNT,
-                        DecemberEvent.GIFT_EVENTS), DecemberEvent.WEEKEND_DISCOUNT, false),
-                Arguments.of(List.of(DecemberEvent.CHRISTMAS_D_DAY_DISCOUNT, DecemberEvent.WEEKDAY_DISCOUNT,
-                        DecemberEvent.GIFT_EVENTS), DecemberEvent.GIFT_EVENTS, true),
-                Arguments.of(List.of(DecemberEvent.WEEKDAY_DISCOUNT,
-                                DecemberEvent.SPECIAL_DISCOUNT, DecemberEvent.GIFT_EVENTS),
-                        DecemberEvent.CHRISTMAS_D_DAY_DISCOUNT, false)
+                Arguments.of(List.of(Event.CHRISTMAS_D_DAY_DISCOUNT, Event.WEEKEND_DISCOUNT,
+                        Event.GIFT_EVENTS), Event.CHRISTMAS_D_DAY_DISCOUNT, true),
+                Arguments.of(List.of(Event.WEEKDAY_DISCOUNT, Event.SPECIAL_DISCOUNT,
+                        Event.GIFT_EVENTS), Event.WEEKEND_DISCOUNT, false),
+                Arguments.of(List.of(Event.CHRISTMAS_D_DAY_DISCOUNT, Event.WEEKDAY_DISCOUNT,
+                        Event.GIFT_EVENTS), Event.GIFT_EVENTS, true),
+                Arguments.of(List.of(Event.WEEKDAY_DISCOUNT,
+                                Event.SPECIAL_DISCOUNT, Event.GIFT_EVENTS),
+                        Event.CHRISTMAS_D_DAY_DISCOUNT, false)
         );
     }
 

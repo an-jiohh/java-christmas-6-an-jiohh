@@ -1,6 +1,6 @@
 package christmas.service;
 
-import christmas.constants.DecemberEvent;
+import christmas.constants.Event;
 import christmas.domain.Date;
 import christmas.domain.TodayBenefits;
 import java.util.ArrayList;
@@ -16,13 +16,13 @@ public class TodayBenefitService {
     }
 
     public TodayBenefits getTodayEvents() {
-        List<DecemberEvent> events = checkTodayEvent();
+        List<Event> events = checkTodayEvent();
         return new TodayBenefits(events);
     }
 
-    private List<DecemberEvent> checkTodayEvent() {
-        DecemberEvent[] values = DecemberEvent.values();
-        List<DecemberEvent> todayEvent = new ArrayList<>();
+    private List<Event> checkTodayEvent() {
+        Event[] values = Event.values();
+        List<Event> todayEvent = new ArrayList<>();
         Arrays.stream(values).forEach((event -> {
             if (checkEvent(event)) {
                 todayEvent.add(event);
@@ -31,7 +31,7 @@ public class TodayBenefitService {
         return todayEvent;
     }
 
-    private boolean checkEvent(DecemberEvent event) {
+    private boolean checkEvent(Event event) {
         if (date.isContainDays(event.getTargetDay())) {
             return true;
         }
