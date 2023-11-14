@@ -3,6 +3,7 @@ package christmas.domain;
 import static christmas.constants.Constants.ZERO_DISCOUNT;
 
 import christmas.constants.DecemberEvent;
+import christmas.constants.EventBadge;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +27,7 @@ public class Discounts {
         return benefitDiscounts;
     }
 
-    public int sumDiscount(DecemberEvent event) {
+    public int getDiscount(DecemberEvent event) {
         if (discounts.containsKey(event)) {
             return discounts.get(event);
         }
@@ -55,6 +56,20 @@ public class Discounts {
 
     public Map<DecemberEvent, Integer> getDiscounts() {
         return Collections.unmodifiableMap(new HashMap<>(discounts));
+    }
+
+    public EventBadge createEventBadge() {
+        int allBenefitsAmount = sumAllBenefitsAmount();
+        if (EventBadge.SANTA.getAmount() <= allBenefitsAmount) {
+            return EventBadge.SANTA;
+        }
+        if (EventBadge.TREE.getAmount() <= allBenefitsAmount) {
+            return EventBadge.TREE;
+        }
+        if (EventBadge.STAR.getAmount() <= allBenefitsAmount) {
+            return EventBadge.STAR;
+        }
+        return EventBadge.NONE;
     }
 
 }
