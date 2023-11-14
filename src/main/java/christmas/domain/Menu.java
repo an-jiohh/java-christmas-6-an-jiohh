@@ -3,6 +3,7 @@ package christmas.domain;
 import christmas.constants.MenuCategory;
 import christmas.constants.MenuItem;
 import christmas.validation.MenuValidator;
+import java.util.Collections;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -46,4 +47,7 @@ public class Menu {
         return menus.keySet().stream().filter(key -> key.getCategory() == menuCategory).collect(Collectors.toList());
     }
 
+    public Map<MenuItem, Integer> getMenus() {
+        return Collections.unmodifiableMap(new EnumMap<>(menus));
+    }
 }
