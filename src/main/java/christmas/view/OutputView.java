@@ -6,6 +6,7 @@ import static christmas.constants.OutputMessage.ALL_PRICE_HEAD;
 import static christmas.constants.OutputMessage.BLANK;
 import static christmas.constants.OutputMessage.COUNT_UNIT;
 import static christmas.constants.OutputMessage.DISCOUNT_AMOUNT_SEPARATOR;
+import static christmas.constants.OutputMessage.EVENT_BADGE_HEAD;
 import static christmas.constants.OutputMessage.GIFT_MENU_HEAD;
 import static christmas.constants.OutputMessage.MENU_HEAD;
 import static christmas.constants.OutputMessage.NEGATIVE_MARK;
@@ -30,6 +31,10 @@ public class OutputView {
         System.out.println(exception.getMessage());
     }
 
+    public void printMessage(String message) {
+        System.out.println(message);
+    }
+
     public void printAllMenu(Menu menu) {
         Map<MenuItem, Integer> menus = menu.getMenus();
         System.out.println(MENU_HEAD);
@@ -41,7 +46,7 @@ public class OutputView {
     public void printBeforeDiscountPrice(Menu menu) {
         int allPrice = menu.sumPrice();
         System.out.println(ALL_PRICE_HEAD);
-        System.out.println(allPrice + PRICE_UNIT);
+        System.out.println(formatter.format(allPrice) + PRICE_UNIT);
     }
 
     public void printGiftMenu(Discounts discounts) {
@@ -61,17 +66,23 @@ public class OutputView {
         }
         Map<DecemberEvent, Integer> discount = discounts.getDiscounts();
         discount.forEach(((event, benefit) -> System.out.println(
-                event.getName() + DISCOUNT_AMOUNT_SEPARATOR + benefit + PRICE_UNIT)));
+                event.getName() + DISCOUNT_AMOUNT_SEPARATOR + formatter.format(benefit) + PRICE_UNIT)));
     }
 
     public void printAllBenefitsAmount(Discounts discounts) {
+        int allAmount = discounts.sumAllBenefitsAmount();
         System.out.println(ALL_BENEFITS_AMOUNT_HEAD);
-        System.out.println(NEGATIVE_MARK + discounts.sumAllBenefitsAmount() + PRICE_UNIT);
+        System.out.println(NEGATIVE_MARK + formatter.format(allAmount) + PRICE_UNIT);
     }
 
     public void printPaymentAmount(Menu menu, Discounts discounts) {
         System.out.println(PAYMENT_AMOUNT_HEAD);
         int totalPrice = menu.sumPrice() - discounts.sumAllDiscountAmount();
-        System.out.println(totalPrice + PRICE_UNITß);
+        System.out.println(formatter.format(totalPrice) + PRICE_UNIT);
+    }
+
+    public void printEventBadge(Discounts discounts) {
+        System.out.println(EVENT_BADGE_HEAD);
+        System.out.println(discounts.createEventBadge().getName());
     }
 }

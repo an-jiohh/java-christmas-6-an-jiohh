@@ -2,12 +2,14 @@ package christmas.constants;
 
 public class OutputMessage {
     public static final String NUMBER_FORMAT = "###,###";
-    public static final String MENU_HEAD = "<주문 메뉴>";
-    public static final String ALL_PRICE_HEAD = "<할인 전 총주문 금액>";
-    public static final String GIFT_MENU_HEAD = "<증정 메뉴>";
-    public static final String ALL_DISCOUNT_HEAD = "<혜택 내역>";
-    public static final String ALL_BENEFITS_AMOUNT_HEAD = "<총혜택 금액>";
-    public static final String PAYMENT_AMOUNT_HEAD = "<할인 후 예상 결제 금액>";
+    public static final String RESULT_HEAD = "12월 3일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
+    public static final String MENU_HEAD = "\n<주문 메뉴>";
+    public static final String ALL_PRICE_HEAD = "\n<할인 전 총주문 금액>";
+    public static final String GIFT_MENU_HEAD = "\n<증정 메뉴>";
+    public static final String ALL_DISCOUNT_HEAD = "\n<혜택 내역>";
+    public static final String ALL_BENEFITS_AMOUNT_HEAD = "\n<총혜택 금액>";
+    public static final String PAYMENT_AMOUNT_HEAD = "\n<할인 후 예상 결제 금액>";
+    public static final String EVENT_BADGE_HEAD = "\n<12월 이벤트 배지>";
     public static final String NEGATIVE_MARK = "-";
     public static final String DISCOUNT_AMOUNT_SEPARATOR = ": -";
     public static final String COUNT_UNIT = "개";
