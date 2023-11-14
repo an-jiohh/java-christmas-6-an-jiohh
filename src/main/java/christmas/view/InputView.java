@@ -4,6 +4,8 @@ import static christmas.constants.Constants.COUNT_POSITION;
 import static christmas.constants.Constants.MENUS_SEPARATOR;
 import static christmas.constants.Constants.MENU_COUNT_SEPARATOR;
 import static christmas.constants.Constants.MENU_POSITION;
+import static christmas.constants.InputMessage.READ_MENU_HEAD;
+import static christmas.constants.InputMessage.READ_NUMBER_HEAD;
 
 import camp.nextstep.edu.missionutils.Console;
 import christmas.exception.DataTypeRangeException;
@@ -21,14 +23,14 @@ public class InputView {
     }
 
     public int readNumberData() {
-        System.out.println("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
+        System.out.println(READ_NUMBER_HEAD);
         String readLine = Console.readLine();
         inputValidator.validateNumber(readLine);
         return validatedNumberParser(readLine);
     }
 
     public HashMap<String, Integer> readMenuData() {
-        System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)");
+        System.out.println(READ_MENU_HEAD);
         String readLine = Console.readLine();
         List<String> menuAndCounts = splitMenuReadLine(readLine);
         List<String[]> separatedMenus = splitMenuAndCount(menuAndCounts);
@@ -48,6 +50,10 @@ public class InputView {
     private HashMap<String, Integer> menuAndCountConverter(List<String[]> separatedMenus) {
         inputValidator.validateMenu(separatedMenus);
         inputValidator.validateCount(separatedMenus);
+        return validatedMenuParser(separatedMenus);
+    }
+
+    private HashMap<String, Integer> validatedMenuParser(List<String[]> separatedMenus) {
         HashMap<String, Integer> menus = new HashMap<>();
         separatedMenus.forEach(separatedMenu -> {
             if (menus.containsKey(separatedMenu[MENU_POSITION])) {
