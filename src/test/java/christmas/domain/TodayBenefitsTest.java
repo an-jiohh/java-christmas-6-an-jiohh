@@ -12,7 +12,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 class TodayBenefitsTest {
 
     @ParameterizedTest
-    @DisplayName("혜택 포함 체크 기능 테스트")
+    @DisplayName("혜택이 포함되어 있는지 확인해주는 기능")
     @MethodSource
     void isContainEventsTest(List<Event> given, Event target, boolean expect) {
         TodayBenefits todayBenefits = new TodayBenefits(given);
