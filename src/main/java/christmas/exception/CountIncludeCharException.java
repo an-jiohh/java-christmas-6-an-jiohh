@@ -2,12 +2,13 @@ package christmas.exception;
 
 import static christmas.constants.ExceptionMessage.MENU_EXCEPTION_MESSAGE;
 
-public class DuplicateMenuException extends IllegalArgumentException {
-    public static final DuplicateMenuException exception = new DuplicateMenuException();
+public class CountIncludeCharException extends IllegalArgumentException {
+    public static final CountIncludeCharException exception = new CountIncludeCharException();
 
-    private DuplicateMenuException() {
+    private CountIncludeCharException() {
         super(MENU_EXCEPTION_MESSAGE);
     }
+
 
     @Override
     public synchronized Throwable fillInStackTrace() {

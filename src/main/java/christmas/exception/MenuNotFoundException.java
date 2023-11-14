@@ -4,7 +4,7 @@ public class MenuNotFoundException extends IllegalArgumentException {
     public static final MenuNotFoundException exception = new MenuNotFoundException();
 
     private MenuNotFoundException() {
-        super("[ERROR] 메뉴가 존재하지 않습니다.");
+        super("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
     }
 
     @Override

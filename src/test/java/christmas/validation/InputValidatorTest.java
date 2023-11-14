@@ -1,6 +1,6 @@
 package christmas.validation;
 
-import christmas.exception.IncludeCharException;
+import christmas.exception.CountIncludeCharException;
 import christmas.exception.InputBlankException;
 import christmas.exception.InvalidMenuCountSeparatorException;
 import christmas.exception.InvalidMenusSeparatorException;
@@ -36,7 +36,7 @@ public class InputValidatorTest {
     @CsvSource({"'ㄱ'", "'가나'", "'1,2'"})
     void checkDigitTest(String readLine) {
         Assertions.assertThatThrownBy(() -> inputValidator.validateNumber(readLine))
-                .isInstanceOf(IncludeCharException.class);
+                .isInstanceOf(CountIncludeCharException.class);
     }
 
     @ParameterizedTest
@@ -105,7 +105,7 @@ public class InputValidatorTest {
     private static Stream<Arguments> validateCountTest() {
         return Stream.of(
                 Arguments.of(List.of(new String[]{"피자", "하나"}, new String[]{"통닭", "2"}, new String[]{"짜장면", "3"}),
-                        IncludeCharException.exception),
+                        CountIncludeCharException.exception),
                 Arguments.of(List.of(new String[]{"피자", "1"}, new String[]{"통닭", ""}, new String[]{"짜장면", "3"}),
                         InputBlankException.exception),
                 Arguments.of(List.of(new String[]{"피자", "1"}, new String[]{"통닭", ""}, new String[]{"짜장면", "  "}),

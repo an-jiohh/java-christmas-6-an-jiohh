@@ -2,12 +2,13 @@ package christmas.exception;
 
 import static christmas.constants.ExceptionMessage.DATE_EXCEPTION_MESSAGE;
 
-public class DateRangeException extends IllegalArgumentException {
-    public static final DateRangeException exception = new DateRangeException();
+public class DateIncludeCharException extends IllegalArgumentException {
+    public static final DateIncludeCharException exception = new DateIncludeCharException();
 
-    private DateRangeException() {
+    private DateIncludeCharException() {
         super(DATE_EXCEPTION_MESSAGE);
     }
+
 
     @Override
     public synchronized Throwable fillInStackTrace() {
