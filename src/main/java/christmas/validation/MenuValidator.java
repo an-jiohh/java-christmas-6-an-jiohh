@@ -1,10 +1,12 @@
 package christmas.validation;
 
 import static christmas.constants.Constants.MAX_MENU_COUNT;
+import static christmas.constants.Constants.ZERO_COUNT;
 
 import christmas.constants.MenuCategory;
 import christmas.constants.MenuItem;
 import christmas.exception.BeverageOnlyOrderException;
+import christmas.exception.CountRangeException;
 import christmas.exception.MenuLimitExceededException;
 import christmas.exception.MenuNotFoundException;
 import java.util.EnumMap;
@@ -15,6 +17,7 @@ public class MenuValidator {
     public static void validateMenu(Map<String, Integer> noneConstantsMenus) {
         checkExistenceMenu(noneConstantsMenus);
         checkCountOverflow(noneConstantsMenus);
+        checkCountRange(noneConstantsMenus);
     }
 
     public static void checkOrderOnlyBeverage(EnumMap<MenuItem, Integer> menus) {
@@ -42,4 +45,12 @@ public class MenuValidator {
             throw MenuLimitExceededException.exception;
         }
     }
+
+    private static void checkCountRange(Map<String, Integer> noneConstantsMenus) {
+        boolean isCountRange = noneConstantsMenus.values().stream().anyMatch(value -> value <= ZERO_COUNT);
+        if (isCountRange) {
+            throw CountRangeException.exception;
+        }
+    }
+
 }
